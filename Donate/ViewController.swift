@@ -91,6 +91,10 @@ class ViewController: UITableViewController,UITextFieldDelegate {
                                           "description": self.emailTextField.text!]
         
         let manager = AFHTTPSessionManager()
+        
+        manager.responseSerializer = AFJSONResponseSerializer(readingOptions: .AllowFragments)
+        
+        
         manager.POST(URL, parameters: params, success: { (operation, responseObject) -> Void in
             
             if let response = responseObject as? [String: String] {
